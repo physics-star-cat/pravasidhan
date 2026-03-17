@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Merriweather, Inter } from "next/font/google";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import GoogleAnalytics from "@/components/GoogleAnalytics";
 import { SITE_NAME, SITE_URL, SITE_DESCRIPTION } from "@/lib/constants";
 import "./globals.css";
 
@@ -57,6 +58,7 @@ export default function RootLayout({
       <body
         className={`${merriweather.variable} ${inter.variable} font-body antialiased`}
       >
+        <GoogleAnalytics />
         <Header />
         <main className="min-h-screen">{children}</main>
         <Footer />
