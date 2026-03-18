@@ -4,7 +4,7 @@ import { SITE_NAME, SITE_URL } from "./constants";
 export interface ArticleFrontmatter {
   title: string;
   slug: string;
-  description: string;
+  description?: string;
   publishedAt: string;
   updatedAt?: string;
   countries: string[];

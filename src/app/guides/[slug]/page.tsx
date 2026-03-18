@@ -1,7 +1,7 @@
 import { notFound } from "next/navigation";
 import type { Metadata } from "next";
 import { compileMDX } from "next-mdx-remote/rsc";
-import { getAllSlugs, getArticleBySlug, getAllArticles } from "@/lib/articles";
+import { getAllSlugs, getContentBySlug, getAllContent, getBlogPostsForGuide } from "@/lib/content";
 import { generateArticleMetadata, generateArticleJsonLd } from "@/lib/seo";
 import ArticleLayout from "@/components/ArticleLayout";
 import AffiliateCTA from "@/components/AffiliateCTA";
@@ -19,13 +19,13 @@ interface PageProps {
 }
 
 export async function generateStaticParams() {
-  const slugs = getAllSlugs();
+  const slugs = getAllSlugs("guides");
   return slugs.map((slug) => ({ slug }));
 }
 
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
   const { slug } = await params;
-  const article = getArticleBySlug(slug);
+  const article = getContentBySlug("guides", slug);
   if (!article) return {};
   return generateArticleMetadata(article);
 }
@@ -49,14 +49,11 @@ function extractHeadings(content: string) {
 }
 
 function extractFAQItems(content: string): { question: string; answer: string }[] {
-  // Find the "## Frequently Asked Questions" section
   const faqSectionRegex = /^## Frequently Asked Questions\s*$/m;
   const faqMatch = faqSectionRegex.exec(content);
   if (!faqMatch) return [];
 
   const faqStart = faqMatch.index + faqMatch[0].length;
-
-  // Find the next ## heading (if any) to bound the FAQ section
   const nextH2Regex = /^## (?!#)/m;
   const remainingContent = content.slice(faqStart);
   const nextH2Match = nextH2Regex.exec(remainingContent);
@@ -64,7 +61,6 @@ function extractFAQItems(content: string): { question: string; answer: string }[
     ? remainingContent.slice(0, nextH2Match.index)
     : remainingContent;
 
-  // Extract ### questions and their answer paragraphs
   const items: { question: string; answer: string }[] = [];
   const questionRegex = /^### (.+)$/gm;
   let qMatch;
@@ -80,7 +76,6 @@ function extractFAQItems(content: string): { question: string; answer: string }[
     const answerText = faqContent
       .slice(start, end)
       .trim()
-      // Remove any MDX component tags that might appear
       .replace(/<[^>]+\/?>/g, "")
       .trim();
     if (answerText) {
@@ -91,9 +86,9 @@ function extractFAQItems(content: string): { question: string; answer: string }[
   return items;
 }
 
-export default async function ArticlePage({ params }: PageProps) {
+export default async function GuidePage({ params }: PageProps) {
   const { slug } = await params;
-  const article = getArticleBySlug(slug);
+  const article = getContentBySlug("guides", slug);
 
   if (!article) {
     notFound();
@@ -110,9 +105,9 @@ export default async function ArticlePage({ params }: PageProps) {
     },
   });
 
-  // Get related articles (same topic, different slug)
-  const allArticles = getAllArticles();
-  const relatedArticles = allArticles
+  // Get related content: guides with same topics + blog posts linking to this guide
+  const allGuides = getAllContent("guides");
+  const relatedGuides = allGuides
     .filter(
       (a) =>
         a.slug !== article.slug &&
@@ -120,9 +115,10 @@ export default async function ArticlePage({ params }: PageProps) {
     )
     .slice(0, 3);
 
+  const relatedBlogPosts = getBlogPostsForGuide(article.slug).slice(0, 3);
+
   const jsonLd = generateArticleJsonLd(article);
 
-  // Generate FAQ JSON-LD if FAQ items were found
   const faqJsonLd = faqItems.length > 0
     ? JSON.stringify({
         "@context": "https://schema.org",
@@ -153,7 +149,7 @@ export default async function ArticlePage({ params }: PageProps) {
       <ArticleLayout
         article={article}
         headings={headings}
-        relatedArticles={relatedArticles}
+        relatedArticles={[...relatedGuides, ...relatedBlogPosts].slice(0, 3)}
       >
         {mdxContent}
       </ArticleLayout>
