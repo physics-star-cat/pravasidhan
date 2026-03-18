@@ -1,67 +1,7 @@
 import Link from "next/link";
 import ArticleCard from "@/components/ArticleCard";
 import { SITE_TAGLINE, COUNTRIES, TOPICS } from "@/lib/constants";
-import type { ArticleMeta } from "@/lib/articles";
-
-// Placeholder featured articles until real content is published
-const placeholderArticles: ArticleMeta[] = [
-  {
-    title: "How to Send Money from Canada to India in 2026: Cheapest Methods Compared",
-    slug: "send-money-canada-to-india",
-    description:
-      "Compare Wise, bank wires, and other services to find the cheapest way to transfer money from Canada to India. Updated rates and fees.",
-    publishedAt: "2026-03-20",
-    countries: ["canada"],
-    topics: ["remittances"],
-    affiliates: ["wise"],
-    keywords: ["send money canada to india"],
-    featured: true,
-    readingTime: "12 min read",
-    readingTimeMinutes: 12,
-  },
-  {
-    title: "Best NRI Tax Filing Services 2026: ClearTax vs Tax2Win vs Hiring a CA",
-    slug: "nri-tax-filing-services",
-    description:
-      "Compare the top NRI tax filing services in India. We review ClearTax, Tax2Win, and CA-assisted filing to help you choose the right option.",
-    publishedAt: "2026-03-22",
-    countries: ["canada"],
-    topics: ["tax"],
-    affiliates: ["cleartax", "tax2win"],
-    keywords: ["NRI tax filing service"],
-    featured: true,
-    readingTime: "10 min read",
-    readingTimeMinutes: 10,
-  },
-  {
-    title: "NRE vs NRO Account for Canadian NRIs: Which Should You Open?",
-    slug: "nre-vs-nro-account-canada",
-    description:
-      "Understand the key differences between NRE and NRO accounts, tax implications, and which account type Canadian NRIs should open first.",
-    publishedAt: "2026-03-25",
-    countries: ["canada"],
-    topics: ["banking"],
-    affiliates: ["sbnri"],
-    keywords: ["NRE vs NRO account"],
-    featured: true,
-    readingTime: "8 min read",
-    readingTimeMinutes: 8,
-  },
-  {
-    title: "Buying Property in India from Canada: Complete Legal & Tax Guide 2026",
-    slug: "buying-property-india-canada",
-    description:
-      "Everything Canadian NRIs need to know about buying property in India — legal requirements, tax implications, financing options, and step-by-step process.",
-    publishedAt: "2026-03-28",
-    countries: ["canada"],
-    topics: ["property"],
-    affiliates: ["nobroker", "squareyards"],
-    keywords: ["NRI buying property India"],
-    featured: true,
-    readingTime: "15 min read",
-    readingTimeMinutes: 15,
-  },
-];
+import { getFeaturedContent, getAllContent } from "@/lib/content";
 
 const topicIcons: Record<string, React.ReactNode> = {
   receipt: (
@@ -92,6 +32,9 @@ const topicIcons: Record<string, React.ReactNode> = {
 };
 
 export default function Home() {
+  const featuredGuides = getFeaturedContent("guides");
+  const latestPosts = getAllContent("blog").slice(0, 3);
+
   return (
     <>
       {/* Hero Section */}
@@ -155,7 +98,7 @@ export default function Home() {
             </p>
           </div>
           <Link
-            href="/canada/"
+            href="/guides/"
             className="hidden sm:inline-flex items-center text-sm font-semibold text-gold-dark hover:text-gold transition-colors"
           >
             View all
@@ -175,7 +118,7 @@ export default function Home() {
           </Link>
         </div>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-          {placeholderArticles.map((article) => (
+          {featuredGuides.map((article) => (
             <ArticleCard key={article.slug} article={article} />
           ))}
         </div>

@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import ArticleCard from "@/components/ArticleCard";
 import Breadcrumbs from "@/components/Breadcrumbs";
-import { getArticlesByCountry } from "@/lib/articles";
+import { getContentByCountry } from "@/lib/content";
 import { generateHubMetadata } from "@/lib/seo";
 
 export const metadata: Metadata = generateHubMetadata(
@@ -11,7 +11,11 @@ export const metadata: Metadata = generateHubMetadata(
 );
 
 export default function CanadaHub() {
-  const articles = getArticlesByCountry("canada");
+  const guides = getContentByCountry("guides", "canada");
+  const posts = getContentByCountry("blog", "canada");
+  const allContent = [...guides, ...posts].sort(
+    (a, b) => new Date(b.publishedAt).getTime() - new Date(a.publishedAt).getTime()
+  );
 
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
@@ -31,10 +35,10 @@ export default function CanadaHub() {
         </p>
       </header>
 
-      {articles.length > 0 ? (
+      {allContent.length > 0 ? (
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {articles.map((article) => (
-            <ArticleCard key={article.slug} article={article} />
+          {allContent.map((item) => (
+            <ArticleCard key={item.slug} article={item} />
           ))}
         </div>
       ) : (
