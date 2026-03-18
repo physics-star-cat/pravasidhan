@@ -6,7 +6,12 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint"
+    "lint": "eslint",
+    "new:guide": "npx tsx scripts/new-guide.ts",
+    "new:blog": "npx tsx scripts/new-blog.ts",
+    "new:news": "npx tsx scripts/new-news.ts",
+    "validate": "npx tsx scripts/validate.ts",
+    "prebuild": "npx tsx scripts/validate.ts"
   },
   "dependencies": {
     "gray-matter": "^4.0.3",
@@ -25,6 +30,7 @@
     "eslint": "^9",
     "eslint-config-next": "16.1.7",
     "tailwindcss": "^4",
+    "tsx": "^4.21.0",
     "typescript": "^5"
   }
 }
