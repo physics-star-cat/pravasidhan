@@ -1,15 +1,31 @@
 import type { MetadataRoute } from "next";
-import { getAllArticles } from "@/lib/articles";
+import { getAllContent } from "@/lib/content";
 import { SITE_URL } from "@/lib/constants";
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const articles = getAllArticles();
+  const guides = getAllContent("guides");
+  const blogPosts = getAllContent("blog");
+  const newsDigests = getAllContent("news");
 
-  const articleEntries: MetadataRoute.Sitemap = articles.map((article) => ({
-    url: `${SITE_URL}/${article.slug}/`,
-    lastModified: article.updatedAt || article.publishedAt,
+  const guideEntries: MetadataRoute.Sitemap = guides.map((item) => ({
+    url: `${SITE_URL}${item.href}`,
+    lastModified: item.updatedAt || item.publishedAt,
     changeFrequency: "monthly",
     priority: 0.8,
+  }));
+
+  const blogEntries: MetadataRoute.Sitemap = blogPosts.map((item) => ({
+    url: `${SITE_URL}${item.href}`,
+    lastModified: item.publishedAt,
+    changeFrequency: "weekly",
+    priority: 0.7,
+  }));
+
+  const newsEntries: MetadataRoute.Sitemap = newsDigests.map((item) => ({
+    url: `${SITE_URL}${item.href}`,
+    lastModified: item.publishedAt,
+    changeFrequency: "daily",
+    priority: 0.5,
   }));
 
   const staticPages: MetadataRoute.Sitemap = [
@@ -18,6 +34,24 @@ export default function sitemap(): MetadataRoute.Sitemap {
       lastModified: new Date().toISOString(),
       changeFrequency: "weekly",
       priority: 1.0,
+    },
+    {
+      url: `${SITE_URL}/guides/`,
+      lastModified: new Date().toISOString(),
+      changeFrequency: "weekly",
+      priority: 0.9,
+    },
+    {
+      url: `${SITE_URL}/blog/`,
+      lastModified: new Date().toISOString(),
+      changeFrequency: "daily",
+      priority: 0.9,
+    },
+    {
+      url: `${SITE_URL}/news/`,
+      lastModified: new Date().toISOString(),
+      changeFrequency: "daily",
+      priority: 0.8,
     },
     {
       url: `${SITE_URL}/canada/`,
@@ -93,5 +127,5 @@ export default function sitemap(): MetadataRoute.Sitemap {
     },
   ];
 
-  return [...staticPages, ...articleEntries];
+  return [...staticPages, ...guideEntries, ...blogEntries, ...newsEntries];
 }

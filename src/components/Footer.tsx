@@ -8,7 +8,23 @@ export default function Footer() {
     <footer className="bg-navy-dark text-gray-300">
       {/* Main Footer */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-8">
+          {/* Content Column */}
+          <div>
+            <h4 className="text-sm font-semibold text-gold uppercase tracking-wider mb-4">
+              Content
+            </h4>
+            {FOOTER_LINKS.content.map((link) => (
+              <Link
+                key={link.href}
+                href={link.href}
+                className="block text-sm text-gray-400 hover:text-gold transition-colors mb-2"
+              >
+                {link.label}
+              </Link>
+            ))}
+          </div>
+
           {/* About Column */}
           <div>
             <h3 className="font-heading text-lg font-bold text-white mb-4">

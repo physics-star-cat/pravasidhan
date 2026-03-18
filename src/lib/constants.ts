@@ -25,6 +25,12 @@ export const NAV_TOPICS: NavItem[] = [
   { label: "Banking", href: "/banking/" },
 ];
 
+export const NAV_CONTENT: NavItem[] = [
+  { label: "Guides", href: "/guides/" },
+  { label: "Blog", href: "/blog/" },
+  { label: "News from Home", href: "/news/" },
+];
+
 export const NAV_ITEMS: NavItem[] = [
   ...NAV_COUNTRIES,
   {
@@ -32,6 +38,8 @@ export const NAV_ITEMS: NavItem[] = [
     href: "#",
     children: NAV_TOPICS,
   },
+  { label: "Blog", href: "/blog/" },
+  { label: "News", href: "/news/" },
   { label: "About", href: "/about/" },
 ];
 
@@ -94,6 +102,11 @@ export const TOPICS: Topic[] = [
 ];
 
 export const FOOTER_LINKS = {
+  content: [
+    { label: "All Guides", href: "/guides/" },
+    { label: "Blog", href: "/blog/" },
+    { label: "News from Home", href: "/news/" },
+  ],
   about: [
     { label: "About PravasiDhan", href: "/about/" },
     { label: "Affiliate Disclosure", href: "/affiliate-disclosure/" },

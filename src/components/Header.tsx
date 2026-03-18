@@ -75,6 +75,20 @@ export default function Header() {
             </div>
 
             <Link
+              href="/blog/"
+              className="px-3 py-2 text-sm font-medium text-gray-200 hover:text-gold transition-colors rounded-md hover:bg-white/5"
+            >
+              Blog
+            </Link>
+
+            <Link
+              href="/news/"
+              className="px-3 py-2 text-sm font-medium text-gray-200 hover:text-gold transition-colors rounded-md hover:bg-white/5"
+            >
+              News
+            </Link>
+
+            <Link
               href="/about/"
               className="px-3 py-2 text-sm font-medium text-gray-200 hover:text-gold transition-colors rounded-md hover:bg-white/5"
             >
@@ -159,6 +173,20 @@ export default function Header() {
             ))}
 
             <div className="border-t border-white/10 pt-3 mt-3">
+              <Link
+                href="/blog/"
+                onClick={() => setMobileMenuOpen(false)}
+                className="block px-3 py-2 text-sm text-gray-200 hover:text-gold hover:bg-white/5 rounded-md transition-colors"
+              >
+                Blog
+              </Link>
+              <Link
+                href="/news/"
+                onClick={() => setMobileMenuOpen(false)}
+                className="block px-3 py-2 text-sm text-gray-200 hover:text-gold hover:bg-white/5 rounded-md transition-colors"
+              >
+                News from Home
+              </Link>
               <Link
                 href="/about/"
                 onClick={() => setMobileMenuOpen(false)}
