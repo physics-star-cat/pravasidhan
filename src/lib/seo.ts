@@ -12,12 +12,13 @@ export interface ArticleFrontmatter {
   affiliates?: string[];
   keywords?: string[];
   featured?: boolean;
+  href?: string;
 }
 
 export function generateArticleMetadata(
   frontmatter: ArticleFrontmatter
 ): Metadata {
-  const canonicalUrl = `${SITE_URL}/${frontmatter.slug}/`;
+  const canonicalUrl = `${SITE_URL}${frontmatter.href || `/${frontmatter.slug}/`}`;
 
   return {
     title: frontmatter.title,
@@ -65,7 +66,7 @@ export function generateArticleJsonLd(frontmatter: ArticleFrontmatter): string {
     },
     mainEntityOfPage: {
       "@type": "WebPage",
-      "@id": `${SITE_URL}/${frontmatter.slug}/`,
+      "@id": `${SITE_URL}${frontmatter.href || `/${frontmatter.slug}/`}`,
     },
   };
 
