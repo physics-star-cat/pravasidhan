@@ -13,8 +13,8 @@ export interface NavItem {
 
 export const NAV_COUNTRIES: NavItem[] = [
   { label: "Canada", href: "/canada/" },
-  { label: "USA", href: "/usa/", comingSoon: true },
-  { label: "UK", href: "/uk/", comingSoon: true },
+  { label: "USA", href: "/usa/" },
+  { label: "UK", href: "/uk/" },
 ];
 
 export const NAV_TOPICS: NavItem[] = [
@@ -52,8 +52,8 @@ export interface Country {
 
 export const COUNTRIES: Country[] = [
   { slug: "canada", name: "Canada", flag: "🇨🇦", active: true },
-  { slug: "usa", name: "USA", flag: "🇺🇸", active: false },
-  { slug: "uk", name: "UK", flag: "🇬🇧", active: false },
+  { slug: "usa", name: "USA", flag: "🇺🇸", active: true },
+  { slug: "uk", name: "UK", flag: "🇬🇧", active: true },
 ];
 
 export interface Topic {
