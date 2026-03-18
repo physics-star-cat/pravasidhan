@@ -1,13 +1,13 @@
 import Link from "next/link";
-import type { ArticleMeta } from "@/lib/articles";
+import type { ContentMeta } from "@/lib/content";
 
 interface ArticleCardProps {
-  article: ArticleMeta;
+  article: ContentMeta;
 }
 
 export default function ArticleCard({ article }: ArticleCardProps) {
   return (
-    <Link href={`/${article.slug}/`} className="group block">
+    <Link href={article.href || `/${article.slug}/`} className="group block">
       <article className="bg-white border border-gray-200 rounded-lg p-6 h-full shadow-sm transition-all duration-200 hover:shadow-md hover:border-l-4 hover:border-l-gold hover:pl-5">
         {/* Tags */}
         <div className="flex flex-wrap gap-2 mb-3">
@@ -35,9 +35,11 @@ export default function ArticleCard({ article }: ArticleCardProps) {
         </h3>
 
         {/* Description */}
-        <p className="text-sm text-text-muted mb-4 line-clamp-2 leading-relaxed">
-          {article.description}
-        </p>
+        {article.description && (
+          <p className="text-sm text-text-muted mb-4 line-clamp-2 leading-relaxed">
+            {article.description}
+          </p>
+        )}
 
         {/* Meta */}
         <div className="flex items-center gap-3 text-xs text-text-muted">

@@ -3,7 +3,7 @@ import Breadcrumbs from "./Breadcrumbs";
 import TableOfContents from "./TableOfContents";
 import Disclaimer from "./Disclaimer";
 import RelatedArticles from "./RelatedArticles";
-import type { ArticleMeta, Article } from "@/lib/articles";
+import type { ContentMeta, Content } from "@/lib/content";
 
 interface TocHeading {
   id: string;
@@ -12,10 +12,10 @@ interface TocHeading {
 }
 
 interface ArticleLayoutProps {
-  article: Article;
+  article: Content;
   headings: TocHeading[];
   children: ReactNode;
-  relatedArticles?: ArticleMeta[];
+  relatedArticles?: ContentMeta[];
 }
 
 export default function ArticleLayout({
@@ -44,7 +44,7 @@ export default function ArticleLayout({
 
   breadcrumbItems.push({
     label: article.title,
-    href: `/${article.slug}/`,
+    href: article.href || `/${article.slug}/`,
   });
 
   return (
@@ -56,9 +56,11 @@ export default function ArticleLayout({
         <h1 className="font-heading text-3xl sm:text-4xl font-bold text-navy mb-4 leading-tight">
           {article.title}
         </h1>
-        <p className="text-lg text-text-muted leading-relaxed mb-4">
-          {article.description}
-        </p>
+        {article.description && (
+          <p className="text-lg text-text-muted leading-relaxed mb-4">
+            {article.description}
+          </p>
+        )}
         <div className="flex flex-wrap items-center gap-4 text-sm text-text-muted">
           <time dateTime={article.publishedAt}>
             Published{" "}

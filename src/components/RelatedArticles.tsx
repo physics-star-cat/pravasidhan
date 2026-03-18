@@ -1,8 +1,8 @@
 import ArticleCard from "./ArticleCard";
-import type { ArticleMeta } from "@/lib/articles";
+import type { ContentMeta } from "@/lib/content";
 
 interface RelatedArticlesProps {
-  articles: ArticleMeta[];
+  articles: ContentMeta[];
 }
 
 export default function RelatedArticles({ articles }: RelatedArticlesProps) {

@@ -35,15 +35,15 @@ export interface ContentMeta {
   updatedAt?: string;
   countries: string[];
   topics: string[];
-  affiliates: string[];
-  keywords: string[];
-  featured: boolean;
-  draft: boolean;
-  relatedGuides: string[];
+  affiliates?: string[];
+  keywords?: string[];
+  featured?: boolean;
+  draft?: boolean;
+  relatedGuides?: string[];
   readingTime: string;
   readingTimeMinutes: number;
-  href: string;
-  contentType: ContentType;
+  href?: string;
+  contentType?: ContentType;
   featuredGuide?: string;
 }
 
@@ -155,7 +155,7 @@ export function getRelatedGuides(slugs: string[]): ContentMeta[] {
 
 export function getBlogPostsForGuide(guideSlug: string): ContentMeta[] {
   return getAllContent("blog").filter((post) =>
-    post.relatedGuides.includes(guideSlug)
+    (post.relatedGuides ?? []).includes(guideSlug)
   );
 }
 
