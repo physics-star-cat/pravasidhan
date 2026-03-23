@@ -11,7 +11,9 @@
     "new:blog": "npx tsx scripts/new-blog.ts",
     "new:news": "npx tsx scripts/new-news.ts",
     "validate": "npx tsx scripts/validate.ts",
-    "prebuild": "npx tsx scripts/validate.ts"
+    "prebuild": "npx tsx scripts/validate.ts",
+    "test": "vitest run",
+    "test:watch": "vitest"
   },
   "dependencies": {
     "gray-matter": "^4.0.3",
@@ -31,6 +33,7 @@
     "eslint-config-next": "16.1.7",
     "tailwindcss": "^4",
     "tsx": "^4.21.0",
-    "typescript": "^5"
+    "typescript": "^5",
+    "vitest": "^4.1.1"
   }
 }
