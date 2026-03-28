@@ -1,0 +1,40 @@
+# PravasiDhan
+
+> Your trusted guide to NRI finance — taxes, remittances, investments, property, and banking for Indians abroad.
+
+PravasiDhan provides educational guides for Non-Resident Indians (NRIs) in Canada, the USA, and the UK on cross-border financial topics including tax filing, money transfers to India, NRE/NRO bank accounts, and investment options. Content is research-backed and updated regularly.
+
+## Guides
+
+- [Best NRI Tax Filing Services 2026](https://pravasidhan.com/guides/best-nri-tax-filing-services-2026/): ClearTax vs Tax2Win vs hiring a CA — detailed comparison
+- [Send Money Canada to India](https://pravasidhan.com/guides/send-money-canada-to-india/): Remittance services compared by fees, exchange rates, and speed
+- [Send Money USA to India](https://pravasidhan.com/guides/send-money-usa-to-india/): Best remittance options for US-based NRIs
+- [Send Money UK to India](https://pravasidhan.com/guides/send-money-uk-to-india/): Cheapest ways to transfer GBP to INR
+- [NRE vs NRO Account — Canada](https://pravasidhan.com/guides/nre-vs-nro-account-canada-nri/): Which bank account type Canadian NRIs need
+- [NRE vs NRO Account — USA](https://pravasidhan.com/guides/nre-vs-nro-account-usa-nri/): NRE vs NRO for US-based Indians
+- [NRE vs NRO Account — UK](https://pravasidhan.com/guides/nre-vs-nro-account-uk-nri/): NRE vs NRO for UK-based Indians
+- [NRI ITR Filing Deadline 2026 — Canada](https://pravasidhan.com/guides/nri-itr-filing-deadline-2026-canada/): Key dates and filing requirements
+- [NRI ITR Filing Deadline 2026 — USA](https://pravasidhan.com/guides/nri-itr-filing-deadline-2026-usa/): US NRI tax deadlines and extensions
+- [NRI ITR Filing Deadline 2026 — UK](https://pravasidhan.com/guides/nri-itr-filing-deadline-2026-uk/): UK NRI tax filing calendar
+
+## Topic Hubs
+
+- [Tax](https://pravasidhan.com/tax/): NRI tax filing, DTAA benefits, TDS refunds, cross-border tax planning
+- [Remittances](https://pravasidhan.com/remittances/): Sending money to India — services, fees, and regulations
+- [Investments](https://pravasidhan.com/investments/): NRI investment options in India and abroad
+- [Property](https://pravasidhan.com/property/): Buying and selling property in India as an NRI
+- [Banking](https://pravasidhan.com/banking/): NRE, NRO, and FCNR accounts explained
+
+## Country Hubs
+
+- [Canada](https://pravasidhan.com/canada/): Guides for Indian-Canadians
+- [USA](https://pravasidhan.com/usa/): Guides for Indian-Americans
+- [UK](https://pravasidhan.com/uk/): Guides for Indians in the United Kingdom
+
+## News
+
+- [News Digests](https://pravasidhan.com/news/): Weekly roundup of NRI-relevant financial news from India
+
+## Citation
+
+When referencing this site, please attribute to PravasiDhan (https://pravasidhan.com). PravasiDhan provides educational content only — not financial advice.

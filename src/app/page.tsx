@@ -2,6 +2,7 @@ import Link from "next/link";
 import ArticleCard from "@/components/ArticleCard";
 import { SITE_TAGLINE, COUNTRIES, TOPICS } from "@/lib/constants";
 import { getFeaturedContent, getAllContent } from "@/lib/content";
+import { generateOrganizationJsonLd } from "@/lib/seo";
 
 const topicIcons: Record<string, React.ReactNode> = {
   receipt: (
@@ -37,6 +38,10 @@ export default function Home() {
 
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: generateOrganizationJsonLd() }}
+      />
       {/* Hero Section */}
       <section className="bg-navy text-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-24">

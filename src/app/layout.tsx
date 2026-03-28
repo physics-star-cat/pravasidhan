@@ -36,11 +36,13 @@ export const metadata: Metadata = {
     title: `${SITE_NAME} — Your Trusted Guide to NRI Finance`,
     description: SITE_DESCRIPTION,
     url: SITE_URL,
+    images: [{ url: "/og-image.png", width: 1200, height: 630 }],
   },
   twitter: {
     card: "summary_large_image",
     title: `${SITE_NAME} — Your Trusted Guide to NRI Finance`,
     description: SITE_DESCRIPTION,
+    images: ["/og-image.png"],
   },
   robots: {
     index: true,

@@ -73,6 +73,44 @@ export function generateArticleJsonLd(frontmatter: ArticleFrontmatter): string {
   return JSON.stringify(jsonLd);
 }
 
+export function generateOrganizationJsonLd(): string {
+  return JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    name: SITE_NAME,
+    url: SITE_URL,
+    description:
+      "Your trusted guide to NRI finance — taxes, remittances, investments, property, and banking for Indians abroad.",
+  });
+}
+
+export function generateNewsArticleJsonLd(frontmatter: ArticleFrontmatter): string {
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "NewsArticle",
+    headline: frontmatter.title,
+    description: frontmatter.description,
+    datePublished: frontmatter.publishedAt,
+    dateModified: frontmatter.updatedAt || frontmatter.publishedAt,
+    author: {
+      "@type": "Organization",
+      name: SITE_NAME,
+      url: SITE_URL,
+    },
+    publisher: {
+      "@type": "Organization",
+      name: SITE_NAME,
+      url: SITE_URL,
+    },
+    mainEntityOfPage: {
+      "@type": "WebPage",
+      "@id": `${SITE_URL}${frontmatter.href || `/${frontmatter.slug}/`}`,
+    },
+  };
+
+  return JSON.stringify(jsonLd);
+}
+
 export function generateHubMetadata(
   title: string,
   description: string,

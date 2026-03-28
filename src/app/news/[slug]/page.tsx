@@ -3,7 +3,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { compileMDX } from "next-mdx-remote/rsc";
 import { getAllSlugs, getContentBySlug } from "@/lib/content";
-import { generateHubMetadata } from "@/lib/seo";
+import { generateHubMetadata, generateNewsArticleJsonLd } from "@/lib/seo";
 import Breadcrumbs from "@/components/Breadcrumbs";
 
 interface PageProps {
@@ -41,8 +41,23 @@ export default async function NewsDigestPage({ params }: PageProps) {
     },
   });
 
+  const newsJsonLd = generateNewsArticleJsonLd({
+    title: digest.title,
+    slug: digest.slug,
+    description: `Daily news digest for NRIs — ${digest.publishedAt}`,
+    publishedAt: digest.publishedAt,
+    updatedAt: digest.updatedAt,
+    countries: digest.countries || [],
+    topics: digest.topics || [],
+    href: `/news/${digest.slug}/`,
+  });
+
   return (
     <article className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: newsJsonLd }}
+      />
       <Breadcrumbs
         items={[
           { label: "News from Home", href: "/news/" },
