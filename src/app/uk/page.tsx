@@ -5,8 +5,8 @@ import { getContentByCountry } from "@/lib/content";
 import { generateHubMetadata } from "@/lib/seo";
 
 export const metadata: Metadata = generateHubMetadata(
-  "NRI Finance Guides for UK — Coming Soon",
-  "Comprehensive guides on taxes, remittances, investments, and banking for Indians living in the United Kingdom. Coming soon.",
+  "NRI Finance Guides for UK — Taxes, Remittances & Banking",
+  "Practical guides on UK-India taxes, remittances, NRE/NRO accounts, ITR filing and investments for Indians living in the United Kingdom.",
   "/uk/"
 );
 
@@ -30,8 +30,8 @@ export default function UKHub() {
         </div>
         <p className="text-lg text-text-muted max-w-3xl leading-relaxed">
           Everything you need to know about managing your Indian finances as a
-          UK-based NRI. Guides on taxes, remittances, investments, and banking
-          coming soon.
+          UK-based NRI — taxes, remittances, NRE/NRO accounts, investments and
+          banking.
         </p>
       </header>
 
